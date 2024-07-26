@@ -39,3 +39,15 @@ VALUES
 (4, 3, 50),
 (5, 2, 120);
 
+INSERT INTO `warehouses` (`name`, `location`, `capacity`)
+VALUES
+('Central Warehouse', '123 Main St, Central City, Country', 5000),
+('East Warehouse', '456 East Ave, East Town, Country', 3000),
+('West Warehouse', '789 West Blvd, West City, Country', 4000),
+('North Warehouse', '101 North Rd, North City, Country', 3500),
+('South Warehouse', '202 South St, South Town, Country', 2500);
+
+
+SELECT `name`, `price`
+FROM `products`
+WHERE `cost` < 10;
