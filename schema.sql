@@ -11,11 +11,11 @@ CREATE TABLE `products` (
 
 -- Table for supplier information 
 CREATE TABLE `suppliers` (
-    `id` INT AUTO_INCREMENT,
+    `supplier_id` INT AUTO_INCREMENT,
     `name` VARCHAR(100) NOT NULL,
     `contact_details` TEXT,
     `address` TEXT,
-    PRIMARY KEY(`id`)
+    PRIMARY KEY(`supplier_id`)
 );
 
 -- M-M relationship between products and suppliers table 
@@ -23,26 +23,26 @@ CREATE TABLE `ProductSuppliers` (
         `product_id` INT, 
         `supplier_id` INT,
         PRIMARY KEY(`product_id`, `supplier_id`),
-        FOREIGN KEY(`product_id`) REFERENCES `products`(product_id),
-        FOREIGN KEY(`supplier_id`) REFERENCES `suppliers`(supplier_id)
+        FOREIGN KEY(`product_id`) REFERENCES `products`(`id`),
+        FOREIGN KEY(`supplier_id`) REFERENCES `suppliers`(`supplier_id`)
 );
 
 -- Table for customer information 
 CREATE TABLE `customers` (
-    `id` INT AUTO_INCREMENT,
+    `customer_id` INT AUTO_INCREMENT,
     `name` VARCHAR(100) NOT NULL,
     `contact_details` TEXT,
     `address` TEXT,
-    PRIMARY KEY(`id`)
+    PRIMARY KEY(`customer_id`)
 );
 
 -- Table for order information 
 CREATE TABLE `orders` (
-    `id` INT AUTO_INCREMENT,
+    `order_id` INT AUTO_INCREMENT,
     `customer_id` INT,
     `order_date` DATE,
     `status` VARCHAR(50) NOT NULL,
-    PRIMARY KEY(`id`),
+    PRIMARY KEY(`order_id`),
     FOREIGN KEY(`customer_id`) REFERENCES `customers`(`customer_id`)
 );
 
@@ -53,7 +53,7 @@ CREATE TABLE `OrderDetails` (
     `quantity` INT NOT NULL,
     PRIMARY KEY(`order_id`, `product_id`),
     FOREIGN KEY(`order_id`) REFERENCES `orders`(`order_id`),
-    FOREIGN KEY(`product_id`) REFERENCES `products`(`product_id`)
+    FOREIGN KEY(`product_id`) REFERENCES `products`(`id`)
 );
 
 -- Table for warehouse information 
@@ -61,7 +61,8 @@ CREATE TABLE `warehouses` (
     `id` INT,
     `name` TEXT NOT NULL,
     `location` TEXT, 
-    `capacity` INTEGER
+    `capacity` INTEGER,
+    PRIMARY KEY(`id`)
 );
 
 -- Table for managing inventory, linking products and warehouses 
@@ -71,5 +72,5 @@ CREATE TABLE `inventory` (
     `warehouse_id` INT,
     `quantity` INT NOT NULL,
     FOREIGN KEY(`product_id`) REFERENCES `products`(`id`),
-    FOREIGN KEY(`warehouse_id`) REFERENCES `warehouses`(`warehouse_id`)
+    FOREIGN KEY(`warehouse_id`) REFERENCES `warehouses`(`id`)
 );
