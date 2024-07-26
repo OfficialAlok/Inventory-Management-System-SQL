@@ -9,16 +9,14 @@ Video overview: <URL HERE>
 The primary purpose of this database is to track and manage inventory levels, orders, sales, and deliveries. It aims to optimize stock levels, reduce holding costs, prevent stockouts or overstock situations, and improve overall operational efficiency for resource allocation. 
 
 The entities included in the scope of the database are: 
-* Products (**this text is bold**): represents individual products and its details. Attributes include ID, name, description, category, price, and cost.  
-* Suppliers (**this text is bold**): represents the suppliers information that provides the products. Attributes include id, name, contact details, and address.
-* Orders (**this text is bold**): represents orders placed by customers and its details. Attributes include id, customer id, order date, and status. 
-* Customers (**this text is bold**): represents customer's information who placed orders. Attributes include id, name, contact details, and address. 
-* Inventory (**this text is bold**): represents product inventory information. Attributes include id, product id, warehouse id, and quantity. 
-* Warehouses (**this text is bold**): represents warehouse information that stores each product. Attributes include id, name, location, and capacity. 
+* **Products**: represents individual products and its details. Attributes include ID, name, description, category, price, and cost.  
+* **Suppliers**: represents the suppliers information that provides the products. Attributes include id, name, contact details, and address.
+* **Orders**: represents orders placed by customers and its details. Attributes include id, customer id, order date, and status. 
+* **Customers**: represents customer's information who placed orders. Attributes include id, name, contact details, and address. 
+* **Inventory**: represents product inventory information. Attributes include id, product id, warehouse id, and quantity. 
+* **Warehouses**: represents warehouse information that stores each product. Attributes include id, name, location, and capacity. 
 
 ## Functional Requirements
-
-In this section you should answer the following questions:
 
 * Add, update, and delete products to monitor the quantities of products available in stock for inventory tracking.
 * Process incoming orders, updating inventory, and managing deliveries of orders.  
@@ -65,6 +63,9 @@ The database includes the following entities:
 ### Relationships
 
 ![ER Diagram](diagram.png)
+
+**Description :**
+- description about ERD
 
 ## Optimizations
 
