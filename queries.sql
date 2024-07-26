@@ -47,7 +47,36 @@ VALUES
 ('North Warehouse', '101 North Rd, North City, Country', 3500),
 ('South Warehouse', '202 South St, South Town, Country', 2500);
 
-
+-- Finding products whose cost is below 10
 SELECT `name`, `price`
 FROM `products`
 WHERE `cost` < 10;
+
+-- Finding customers whose name starts with 'A'
+SELECT `customer_id`, `name` FROM `customers`
+WHERE `name` LIKE 'A%';
+
+--Total number of products and their total stock
+SELECT COUNT(*) AS `total_products`, SUM(i.`quantity`) AS `total_stock`
+FROM `products` p
+JOIN `inventory` i ON p.`id` = i.`product_id`;
+
+-- procedure which deletes a product from the `products`
+CREATE PROCEDURE `DeleteProduct`(
+    IN `prod_id` INT
+)
+BEGIN
+    DELETE FROM `inventory` WHERE `product_id` = `prod_id`;
+    DELETE FROM `ProductSuppliers` WHERE `product_id` = `prod_id`;
+    DELETE FROM `products` WHERE id = `prod_id`;
+END;
+
+--Trigger for reducing quantity of ordered product
+CREATE TRIGGER after_order
+AFTER INSERT ON OrderDetails
+FOR EACH ROW
+BEGIN
+    UPDATE inventory
+    SET quantity = quantity - New.quantity
+    WHERE product_id = New.product_id;
+END;
