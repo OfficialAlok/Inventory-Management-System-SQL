@@ -4,8 +4,8 @@ CREATE TABLE `products` (
     `name` VARCHAR(100) NOT NULL,
     `description` TEXT,
     `category` VARCHAR(50),
-    `price` DECIMAL(10, 2) NOT NULL,
     `cost` DECIMAL(10, 2) NOT NULL,
+    `price` DECIMAL(10, 2) NOT NULL,
     PRIMARY KEY(`id`)
 );
 
@@ -58,7 +58,7 @@ CREATE TABLE `OrderDetails` (
 
 -- Table for warehouse information 
 CREATE TABLE `warehouses` (
-    `id` INT,
+    `id` INT AUTO_INCREMENT,
     `name` TEXT NOT NULL,
     `location` TEXT, 
     `capacity` INTEGER,
@@ -67,10 +67,11 @@ CREATE TABLE `warehouses` (
 
 -- Table for managing inventory, linking products and warehouses 
 CREATE TABLE `inventory` (
-    `id` INT,
+    `id` INT AUTO_INCREMENT,
     `product_id` INT,
     `warehouse_id` INT,
     `quantity` INT NOT NULL,
+    PRIMARY KEY(`id`),
     FOREIGN KEY(`product_id`) REFERENCES `products`(`id`),
     FOREIGN KEY(`warehouse_id`) REFERENCES `warehouses`(`id`)
 );
