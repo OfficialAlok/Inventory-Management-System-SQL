@@ -26,6 +26,8 @@ The entities included in the scope of the database are:
 
 ## Representation
 
+Entities are captured in MySQL tables with the following schema.
+
 ### Entities
 
 The database includes the following entities:
@@ -61,6 +63,8 @@ The database includes the following entities:
     - Constraints: ID is a PK  
 
 ### Relationships
+
+The below entity relationship diagram describes the relationships among the entities in the database.
 
 ![ER Diagram](diagram.png)
 
