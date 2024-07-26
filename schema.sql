@@ -2,7 +2,7 @@
 CREATE TABLE `products` (
     `id` INT AUTO_INCREMENT,
     `name` VARCHAR(100) NOT NULL,
-    'description' TEXT,
+    `description` TEXT,
     `category` VARCHAR(50),
     `price` DECIMAL(10, 2) NOT NULL,
     `cost` DECIMAL(10, 2) NOT NULL,
