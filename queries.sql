@@ -72,11 +72,21 @@ BEGIN
 END;
 
 --Trigger for reducing quantity of ordered product
-CREATE TRIGGER after_order
-AFTER INSERT ON OrderDetails
+CREATE TRIGGER `after_order`
+AFTER INSERT ON `OrderDetails`
 FOR EACH ROW
 BEGIN
-    UPDATE inventory
-    SET quantity = quantity - New.quantity
-    WHERE product_id = New.product_id;
+    UPDATE `inventory`
+    SET `quantity` = `quantity` - New.`quantity`
+    WHERE `product_id` = New.`product_id`;
+END;
+
+-- Trigger for order cancellation
+CREATE TRIGGER `after_order_cancel`
+AFTER DELETE ON OrderDetails
+FOR EACH ROW
+BEGIN
+    UPDATE `inventory`
+    SET `quantity` = `quantity` + OLD.`quantity`
+    WHERE `product_id` = OLD.`product_id`;
 END;
