@@ -69,7 +69,12 @@ The below entity relationship diagram describes the relationships among the enti
 ![ER Diagram](diagram.png)
 
 **Description :**
-- description about ERD
+- One product can have 1 to many entries in the Inventory table and one product might not be stored in any warehouse (0 entries) if it has not been stocked yet.
+- One warehouse can have 1 to many inventory entries, showing the different products stored in that warehouse. Each inventory entry is associated with one and only one warehouse, specifying where the product is stored. 
+- One product can be supplied by one or more suppliers, indicating that a product may have multiple sources for procurement. Each supplier can supply one or more products and a supplier may have a range of products they provide. 
+- One customer can place one or several orders and each order is associated with one and only one customer, indicating that the order was placed by a specific customer.
+- The OrderDetails table links Orders and Products table, detailing which products were included in each order and the quantities. 
+- The ProductSuppliers table links Products and Suppliers table, each entry in the ProductSuppliers table corresponds to a unique pairing of a product ID and a supplier ID, detailing which supplier provides which product. 
 
 ## Optimizations
 

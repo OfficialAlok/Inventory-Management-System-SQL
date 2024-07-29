@@ -18,7 +18,7 @@ CREATE TABLE `suppliers` (
     PRIMARY KEY(`supplier_id`)
 );
 
--- M-M relationship between products and suppliers table 
+-- M:N relationship between products and suppliers table 
 CREATE TABLE `ProductSuppliers` (
         `product_id` INT, 
         `supplier_id` INT,
@@ -46,7 +46,7 @@ CREATE TABLE `orders` (
     FOREIGN KEY(`customer_id`) REFERENCES `customers`(`customer_id`)
 );
 
--- M-M relationship between orders and products table 
+-- M:N relationship between orders and products table 
 CREATE TABLE `OrderDetails` (
     `order_id` INT, 
     `product_id` INT, 
@@ -73,9 +73,10 @@ CREATE TABLE `inventory` (
     `quantity` INT NOT NULL,
     PRIMARY KEY(`id`),
     FOREIGN KEY(`product_id`) REFERENCES `products`(`id`),
-    FOREIGN KEY(`warehouse_id`) REFERENCES `warehouses`(`id`)
+    FOREIGN KEY(`warehouse_id`) REFERENCES `warehouses`(`id`),
+    UNIQUE(product_id, warehouse_id)
 );
--- View to see the current inventory status with product details
+-- Creating view to see the current inventory status with product details
 CREATE VIEW `inventory_status` AS
 SELECT p.`id` AS product_id, p.`name` AS product_name, p.`category` AS category,
     i.`quantity` AS Quantity, w.`name` AS warehouse
@@ -83,12 +84,12 @@ FROM inventory i
 JOIN products p ON p.`id` = i.`product_id`
 JOIN warehouses w ON w.`id` = i.`warehouse_id`;
 
---View to omit sensitive information of customer
+-- Creating view to omit sensitive information of customer
 CREATE VIEW `public_customers` AS
 SELECT `customer_id`, `name`, `address`
 FROM `customers`;
 
--- Creating index for speed up the retrieval of data
+-- Creating index to speed up the common searches 
 CREATE INDEX `index_on_inventory_product` ON `inventory`(`product_id`);
 CREATE INDEX `index_on_inventory_warehouse` ON `inventory`(`warehouse_id`);
 CREATE INDEX `index_on_order_status` ON `orders`(`status`);
