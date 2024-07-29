@@ -76,7 +76,8 @@ CREATE TABLE `inventory` (
     FOREIGN KEY(`warehouse_id`) REFERENCES `warehouses`(`id`),
     UNIQUE(product_id, warehouse_id)
 );
--- Creating view to see the current inventory status with product details
+
+-- Create view to see the current inventory status with product details
 CREATE VIEW `inventory_status` AS
 SELECT p.`id` AS product_id, p.`name` AS product_name, p.`category` AS category,
     i.`quantity` AS Quantity, w.`name` AS warehouse
@@ -84,12 +85,12 @@ FROM inventory i
 JOIN products p ON p.`id` = i.`product_id`
 JOIN warehouses w ON w.`id` = i.`warehouse_id`;
 
--- Creating view to omit sensitive information of customer
+-- Create view to omit sensitive information of customer
 CREATE VIEW `public_customers` AS
 SELECT `customer_id`, `name`, `address`
 FROM `customers`;
 
--- Creating index to speed up the common searches 
+-- Create index to speed up the common searches 
 CREATE INDEX `index_on_inventory_product` ON `inventory`(`product_id`);
 CREATE INDEX `index_on_inventory_warehouse` ON `inventory`(`warehouse_id`);
 CREATE INDEX `index_on_order_status` ON `orders`(`status`);

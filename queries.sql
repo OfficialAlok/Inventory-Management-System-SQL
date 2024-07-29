@@ -116,7 +116,7 @@ BEGIN
     WHERE `product_id` = New.`product_id`;
 END;
 
--- Creates trigger for order cancellation
+-- Create trigger for order cancellation
 CREATE TRIGGER `after_order_cancel`
 AFTER DELETE ON `OrderDetails`
 FOR EACH ROW
