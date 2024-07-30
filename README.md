@@ -34,32 +34,32 @@ The database includes the following entities:
 
 - Products: 
     - Attributes: ID, name, description, category, price, cost
-    - Types: ID (`INT`), name (`VARCHAR`), description (`TEXT`), category (`VARCHAR`), price (`DECIMAL`), cost (`DECIMAL`)
+    - Types: ID `INT`, name `VARCHAR`, description `TEXT`, category `VARCHAR`, price `DECIMAL`, cost `DECIMAL`
     - Constraints: ID is a PK
 
 - Suppliers: 
     - Attributes: ID, name, contact details, address
-    - Types: ID (`INT`), name (`VARCHAR`),  contact_details (`TEXT`),  address (`TEXT`),
+    - Types: ID `INT`, name `VARCHAR`,  contact_details `TEXT`,  address `TEXT`,
     - Constraints: ID is a PK 
 
 - Orders:
     - Attributes: ID, customer ID, order date, status
-    - Types: ID (`INT`) customer ID (`INT`), order date (`TEXT`), Status (`TEXT`)
+    - Types: ID `INT`, customer ID `INT`, order date `TEXT`, Status `TEXT`
     - Constraints: ID is a PK and FK referencing customer table on customer ID 
 
 - Customers: 
     - Attributes: ID, name, contact details, address 
-    - Types: ID (`INT`), name (`TEXT`), contact details (`TEXT`), address (`TEXT`)
+    - Types: ID `INT`, name `TEXT`, contact details `TEXT`, address `TEXT`
     - Constraints: ID is a PK 
 
 - Inventory: 
     - Attributes: ID, product ID, warehouse ID, quantity 
-    - Types: ID (`INT`), product ID (`INT`), warehouse ID (`INT`), quantity (`INT`) 
+    - Types: ID `INT`, product ID `INT`, warehouse ID `INT`, quantity `INT` 
     - Constraints: FK referencing products table on product ID, and FK referencing warehouse table on warehouse ID 
 
 - Warehouse: 
     - Attributes: ID, name, location, capacity 
-    - Types: ID (`INT`), name (`TEXT`), location (`TEXT`), capacity (`INT`) 
+    - Types: ID `INT`, name `TEXT`, location `TEXT`, capacity `INT` 
     - Constraints: ID is a PK  
 
 ### Relationships
