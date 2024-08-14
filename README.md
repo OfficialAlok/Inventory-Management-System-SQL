@@ -1,4 +1,4 @@
-# Design Document 
+# Inventory Management System
 
 By Sage Park and Alok Kumar 
 
